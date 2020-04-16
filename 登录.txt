@@ -1,0 +1,47 @@
+#include <iostream>
+#include <Windows.h>
+#include <string>
+#include <conio.h>
+using namespace std;
+void setwindows()
+{
+	system("title 邮箱验证");
+	system("color f0");
+	system("mode con cols=40 lines=18");
+}
+int main()
+{
+	setwindows();
+	char username[20];
+	char password[20];
+	cout << "用户名：";
+	cin >> username;
+	cout << "密码：";
+
+
+	char key;
+	int i = 0;
+	while ((key=_getch()) != '\r')
+	{
+		if (i < 15)
+		{
+			password[i] = key;
+			i++;
+			cout << "*";
+		}
+		else
+		{
+			cout << "密码过长！" << endl;
+			break;
+		}
+	}
+	password[i] = '\0';
+	cout << endl;
+	if (!strcmp(username, "1234") && !strcmp(password, "123456"))
+	{
+		cout << "wonderful" << endl;
+	}
+	else return main();
+	system("pause");
+	return 0;
+}
